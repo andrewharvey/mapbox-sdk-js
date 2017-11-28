@@ -37,20 +37,22 @@ Generally Available
 
 ## Installation
 
+### In Node.js
 ```sh
 $ npm install --save mapbox
 ```
 
+### In browser
+
+```html
+<script src='https://unpkg.com/mapbox@1.0.0-beta9/dist/mapbox-sdk.min.js'></script>
+```
+
 ## Usage
 
-Setup via `node`:
+If using the script tag in the browser, `MapboxClient` is already set otherwise via `node`:
 ```js
 var MapboxClient = require('mapbox');
-```
-
-Setup via `script` tag:
-```
-<script src='https://unpkg.com/mapbox@1.0.0-beta9/dist/mapbox-sdk.min.js'></script>
 ```
 
 Initializing:
