@@ -106,6 +106,7 @@ See the [corresponding HTTP service documentation][195].
   - `config.ownerId` **[string][197]?** 
   - `config.metadata` **[boolean][198]?** If true, `mapbox:` specific metadata will be preserved
   - `config.draft` **[boolean][198]** If `true` will retrieve the draft style, otherwise will retrieve the published style. (optional, default `false`)
+  - `config.fresh` **[boolean][198]** If `true`, will bypass the cached version of the style. Fresh style requests have a lower rate limit than cached requests and may have a higher latency. `fresh=true` should never be used in production or high concurrency environments. (optional, default `false`)
 
 #### Examples
 
@@ -1145,6 +1146,8 @@ List tileset sources
 
 - `config` **[Object][196]?** 
   - `config.ownerId` **[string][197]?** 
+  - `config.limit` **[number][201]** The maximum number of tilesets to return, from 1 to 500. (optional, default `100`)
+  - `config.start` **[string][197]?** The tileset after which to start the listing.
 
 #### Examples
 
@@ -1300,6 +1303,8 @@ List information about all jobs for a tileset
 - `config` **[Object][196]** 
   - `config.tilesetId` **[string][197]** ID of the tileset in the form `username.tileset_name`.
   - `config.stage` **(`"processing"` \| `"queued"` \| `"success"` \| `"failed"`)?** 
+  - `config.limit` **[number][201]** The maximum number of tilesets to return, from 1 to 500. (optional, default `100`)
+  - `config.start` **[string][197]?** The tileset after which to start the listing.
 
 #### Examples
 
@@ -1414,7 +1419,7 @@ tilesetsClient.updateRecipe({
   })
   .send()
   .then(response => {
-    const updated = response.statusCode === 201;
+    const updated = response.statusCode === 204;
   });
 ```
 
